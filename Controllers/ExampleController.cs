@@ -3,49 +3,51 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using CoustmerApp.Models;
+using WebApplication4.Models;
 
-namespace CoustmerApp.Controllers
+namespace WebApplication4.Controllers
 {
     public class ExampleController : Controller
     {
-        public ViewResult AllCoustomer()
+        // GET: Example
+        public ViewResult AllEmployees()
         {
-            var context = new AssesmentEntities();
-            var model = context.CustTables.ToList();
+            var context = new LttsEntities();
+            var model = context.EmpTables.ToList();
             return View(model);
         }
         public ViewResult Find(string id)
         {
-            int custID = int.Parse(id);
-            var context = new AssesmentEntities();
-            var model = context.CustTables.FirstOrDefault((e) => e.CustID == custID);
+            int empID = int.Parse(id);
+            var context = new LttsEntities();
+            var model = context.EmpTables.FirstOrDefault((e) => e.EmpID == empID);
             return View(model);
         }
         [HttpPost]
-        public ActionResult Find(CustTable cst)
+        public ActionResult Find(EmpTable emp)
         {
-            var context = new AssesmentEntities();
-            var model = context.CustTables.FirstOrDefault((e) => e.CustID == cst.CustID);
-            model.CustName = cst.CustName;
-            model.CustAddress = cst.CustAddress;
+            var context = new LttsEntities();
+            var model = context.EmpTables.FirstOrDefault((e) => e.EmpID == emp.EmpID);
+            model.EmpName = emp.EmpName;
+            model.EmpSalary = emp.EmpSalary;
             context.SaveChanges();
-            return RedirectToAction(" AllCoustomer");
+            return RedirectToAction("AllEmployees");
         }
-
-        public ViewResult NewCustomer()
+        
+        public ViewResult NewEmployee()
         {
-            var model = new CustTable();
+            var model = new EmpTable();
             return View(model);
         }
         [HttpPost]
-        public ActionResult NewCustomer(CustTable cst)
+        public ActionResult NewEmployee(EmpTable emp)
         {
-            var context = new AssesmentEntities();
-            context.CustTables.Add(cst);
+            var context = new LttsEntities();
+            context.EmpTables.Add(emp);
             context.SaveChanges();
-            return RedirectToAction("AllCoustomer");
+            return RedirectToAction("AllEmployees");
         }
+            
 
 
     }

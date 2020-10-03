@@ -1,15 +1,18 @@
 ﻿@model WebApplication4.Models.EmpTable
 
+@{
+    Layout = null;
+}
 
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Find</title>
+    <title>NewEmployee</title>
 </head>
 <body>
-    <h1>Details of the Employee to Update</h1>
+    <h1>New Employee Registeration</h1>
     <div>
         @using (Html.BeginForm())
         {
@@ -18,12 +21,13 @@
             </p>
             <p>
                 Enter the EmpName: @Html.EditorFor((m) => m.EmpName)
+
             </p>
             <p>
-                Enter the EmpSalary: @Html.EditorFor((m)=> m.EmpSalary)
-                </p>
-                <button>Save Changes</button>
-                }
+                Enter the EmpSalary: @Html.EditorFor((m) => m.EmpSalary)
+            </p>
+            <button>Add Employee</button>
+        }
         </div>
 </body>
 </html>
