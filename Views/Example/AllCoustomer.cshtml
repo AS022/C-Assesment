@@ -1,0 +1,44 @@
+﻿@model List<CoustmerApp.Models.CustTable>
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AllCoustomer</title>
+</head>
+<body>
+    <nav>
+        <div>
+            @Html.ActionLink("New Registeration", "NewCustomer")
+        </div>
+    </nav>
+    <h1>List of Coustmer with Us!!!!</h1>
+    <div>
+
+
+        <table border="1" width="100%">
+            <tr>
+                <th>CustomerID</th>
+                <th>CustomerName</th>
+                <th>CustomerAddress</th>
+                <th>Options</th>
+            </tr>
+            @foreach (var cst in Model)
+            {
+                <tr>
+                    <td>@cst.CustID</td>
+                    <td>@cst.CustName</td>
+                    <td>@cst.CustAddress</td>
+                    <td>@Html.ActionLink("Edit", "Find", new { id = cst.CustID })</td>
+
+                </tr>
+            }
+
+        </table>
+    </div>
+</body>
+</html>

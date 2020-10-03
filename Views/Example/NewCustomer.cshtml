@@ -1,0 +1,34 @@
+﻿@model CoustmerApp.Models.CustTable
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>NewCustomer</title>
+</head>
+<body>
+    <h1>New Customer Registeration</h1>
+    <div>
+        @using (Html.BeginForm())
+        {
+            <p>
+                Enter the CustID: @Html.EditorFor((m) => m.CustID)
+            </p>
+            <p>
+                Enter the CustName: @Html.EditorFor((m) => m.CustName)
+
+            </p>
+            <p>
+                Enter the CustAddress: @Html.EditorFor((m) => m.CustAddress)
+            </p>
+            <button>Add Employee</button>
+        }
+    </div>
+    
+</body>
+</html>
