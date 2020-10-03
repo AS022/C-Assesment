@@ -1,0 +1,21 @@
+namespace ExamWebApp.Models
+{
+    using System;
+    using System.Data.Entity;
+    using System.Data.Entity.Infrastructure;
+    
+    public partial class MyDatabase : DbContext
+    {
+        public MyDatabase()
+            : base("name=MyDatabase")
+        {
+        }
+    
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            throw new UnintentionalCodeFirstException();
+        }
+    
+        public virtual DbSet<EmpTable> EmpTables { get; set; }
+    }
+}
